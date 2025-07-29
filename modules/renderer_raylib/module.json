@@ -1,0 +1,14 @@
+{
+    "name": "renderer_raylib",
+    "version": "1.0.0",
+    "api_version": 1,
+    "dependencies": [
+        "renderer_interface"
+    ],
+    "entry_point": "CreateRaylibRenderer",
+    "description": "Raylib-based renderer implementation for 2D and 3D graphics",
+    "author": "Game Engine Team",
+    "license": "MIT",
+    "platforms": ["windows", "linux", "macos"],
+    "tags": ["renderer", "graphics", "raylib", "opengl"]
+}

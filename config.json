@@ -1,0 +1,65 @@
+{
+    "engine": {
+        "name": "Game Engine",
+        "version": "1.0.0",
+        "max_fps": 60,
+        "vsync": true,
+        "window": {
+            "title": "Game Engine",
+            "width": 1280,
+            "height": 720,
+            "resizable": true,
+            "fullscreen": false,
+            "borderless": false
+        }
+    },
+    "modules": {
+        "auto_load": [
+            "renderer_raylib",
+            "asset_manager"
+        ],
+        "search_paths": [
+            "modules"
+        ]
+    },
+    "renderer": {
+        "backend": "raylib",
+        "clear_color": [0.1, 0.1, 0.1, 1.0],
+        "msaa": true,
+        "shadows": true,
+        "debug_draw": false
+    },
+    "assets": {
+        "paths": [
+            "assets",
+            "cooked_assets"
+        ],
+        "hot_reload": true,
+        "cache_size_mb": 512
+    },
+    "physics": {
+        "enabled": true,
+        "gravity": [0.0, -9.81, 0.0],
+        "sub_steps": 1,
+        "debug_draw": false
+    },
+    "audio": {
+        "enabled": true,
+        "master_volume": 1.0,
+        "music_volume": 0.8,
+        "sfx_volume": 1.0
+    },
+    "logging": {
+        "level": "debug",
+        "console": true,
+        "file": "engine.log",
+        "max_file_size_mb": 10
+    },
+    "debug": {
+        "enabled": true,
+        "show_fps": true,
+        "show_memory": false,
+        "show_entities": false,
+        "profiler": false
+    }
+}
