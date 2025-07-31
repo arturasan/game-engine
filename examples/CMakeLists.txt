@@ -1,0 +1,3 @@
+add_subdirectory(basic_2d)
+add_subdirectory(basic_3d)
+add_subdirectory(multiplayer_demo)

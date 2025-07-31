@@ -1,0 +1,11 @@
+{
+  "name": "game-engine",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "raylib",
+    "entt",
+    "glm",
+    "nlohmann-json",
+    "spdlog"
+  ]
+}

@@ -45,41 +45,17 @@ cmake --build . --config Release
 
 ```cpp
 #include "core/Engine.hpp"
-#include "ecs/Components.hpp"
-#include "modules/IRenderer.hpp"
+#include "core/ModuleManager.hpp"
+#include "modules/renderer_raylib/include/RaylibRenderer.hpp"
 
-using namespace GameEngine;
+#include <memory>
 
 int main() {
-    // Create and initialize engine
     EngineCore engine;
-    if (!engine.Initialize("config.json")) {
-        return 1;
-    }
-    
-    // Get services
-    auto& renderer = ServiceLocator<IRenderer>::Get();
-    
-    // Create game objects
-    entt::registry registry;
-    
-    // Create a player entity
-    auto player = registry.create();
-    registry.emplace<TransformComponent>(player, glm::vec3{0, 0, 0});
-    registry.emplace<RenderableComponent>(player, "player.mesh", "player.material");
-    registry.emplace<TagComponent>(player, "Player");
-    
-    // Create a camera
-    auto camera = registry.create();
-    registry.emplace<TransformComponent>(camera, glm::vec3{0, 5, 10});
-    registry.emplace<CameraComponent>(camera);
-    registry.emplace<TagComponent>(camera, "Camera");
-    
-    // Run the game
+    // Register modules here
+    engine.GetModuleManager().RegisterModule(std::make_unique<RaylibRenderer>());
+
     engine.Run();
-    
-    // Cleanup
-    engine.Shutdown();
     return 0;
 }
 ```

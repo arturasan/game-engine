@@ -72,28 +72,17 @@ cmake --build . --config Release
 
 ```cpp
 #include "core/Engine.hpp"
-#include "modules/IRenderer.hpp"
+#include "core/ModuleManager.hpp"
+#include "modules/renderer_raylib/include/RaylibRenderer.hpp"
 
-using namespace GameEngine;
+#include <memory>
 
 int main() {
-    // Create and initialize engine
     EngineCore engine;
-    if (!engine.Initialize()) {
-        return 1;
-    }
-    
-    // Get renderer service
-    auto& renderer = ServiceLocator<IRenderer>::Get();
-    
-    // Create game objects and systems
-    // ...
-    
-    // Run the game
+    // Register modules here
+    engine.GetModuleManager().RegisterModule(std::make_unique<RaylibRenderer>());
+
     engine.Run();
-    
-    // Cleanup
-    engine.Shutdown();
     return 0;
 }
 ```

@@ -1,0 +1,49 @@
+# Build artifacts
+build/
+
+# vcpkg artifacts (if not managed outside project)
+vcpkg_installed/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install/
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Object files
+*.o
+*.obj
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+*.aps
+*.vspscc
+*.vssscc
+*.bak
+*.pch
+*.ipch
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+
+# Logs
+*.log
+
+# Temporary files
+*~
+*.tmp
+
+# OS generated files
+.DS_Store
+thumbs.db

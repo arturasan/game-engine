@@ -11,21 +11,12 @@ option(BUILD_TESTS "Build test suite" ON)
 option(BUILD_TOOLS "Build standalone tools" ON)
 option(ENABLE_AI "Enable AI tooling" ON)
 
-# Set output directories
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-# Include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
-
-# Find dependencies
-find_package(EnTT REQUIRED)
-find_package(raylib REQUIRED)
-find_package(glm REQUIRED)
-find_package(nlohmann_json REQUIRED)
-find_package(spdlog REQUIRED)
+# Dependencies
+find_package(raylib CONFIG REQUIRED)
+find_package(EnTT CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
 
 # Core engine
 add_subdirectory(engine)
@@ -48,20 +39,3 @@ if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif()
-
-# Configure package
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/GameEngineConfigVersion.cmake"
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
-)
-
-install(EXPORT GameEngineTargets
-    FILE GameEngineTargets.cmake
-    DESTINATION lib/cmake/GameEngine
-)
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/GameEngineConfigVersion.cmake"
-    DESTINATION lib/cmake/GameEngine
-)
